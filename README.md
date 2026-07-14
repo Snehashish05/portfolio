@@ -32,9 +32,12 @@ Then open the local URL shown in the terminal (usually `http://localhost:5173`).
 
 1. Push this project to a GitHub repository.
 2. Ensure your default branch is `main`.
-3. In GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**.
-4. Push to `main` (or run the workflow manually under **Actions**).
-5. After deployment completes, your portfolio will be live at:
+3. In GitHub, open **Settings → Pages**.
+4. Under **Build and deployment**, set:
+	- **Source** = Deploy from a branch
+	- **Branch** = `gh-pages` and folder = `/ (root)`
+5. Push to `main` (or run the workflow manually under **Actions**).
+6. After deployment completes, your portfolio will be live at:
 
 	`https://<your-github-username>.github.io/<your-repo-name>/`
 

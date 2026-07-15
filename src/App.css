@@ -385,6 +385,29 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.certifications-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.certification-header {
+  margin-bottom: 0.7rem;
+}
+
+.certification-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  padding: 0.45rem;
+}
+
+.certification-link {
+  display: inline-flex;
+  margin-top: 0.55rem;
+}
+
 .skill-category-title {
   display: flex;
   align-items: center;
@@ -481,6 +504,10 @@ h2 {
   }
 
   .skills-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .certifications-grid {
     grid-template-columns: 1fr;
   }
 

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const projects = [
   {
     title: 'Online Doctor Consultation System',
@@ -139,6 +141,20 @@ const education = [
   },
 ];
 
+const certifications = [
+  {
+    name: 'Cisco Certified Network Associate (CCNA)',
+    issuer: 'Cisco',
+    issued: 'Jul 2026',
+    expires: 'Jul 2029',
+    credentialId: '25bdc7d8-7d44-4660-bc76-c4cc3986e4dd',
+    credentialLink:
+      'https://www.credly.com/earner/earned/badge/25bdc7d8-7d44-4660-bc76-c4cc3986e4dd',
+    badgeLogo:
+      'https://www.practicalnetworking.net/wp-content/uploads/2019/10/CCNA-Certification-Logo.jpg',
+  },
+];
+
 const profile = {
   name: 'Snehashish Saha',
   title: 'Software Engineer',
@@ -149,7 +165,7 @@ const profile = {
     github: 'https://github.com/Snehashish05',
     linkedin:
       'https://www.linkedin.com/in/snehashish-saha-570392229?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-    resume: '/Resume_Snehashish__Copy_(1).pdf',
+    resume: `${baseUrl}Resume_Snehashish__Copy_(1).pdf`,
   },
 };
 
@@ -219,7 +235,7 @@ export default function App() {
             ☰
           </button>
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            {['about', 'projects', 'education', 'skills', 'contact'].map((section) => (
+            {['about', 'projects', 'education', 'certifications', 'skills', 'contact'].map((section) => (
               <a key={section} href={`#${section}`} onClick={() => setMenuOpen(false)}>
                 {section[0].toUpperCase() + section.slice(1)}
               </a>
@@ -240,7 +256,7 @@ export default function App() {
               <div className="hero-photo-wrap">
                 <img
                   className="hero-photo"
-                  src="/profile-photo.jpg"
+                  src={`${baseUrl}profile-photo.jpg`}
                   alt="Portrait of Snehashish Saha"
                   loading="lazy"
                   decoding="async"
@@ -389,6 +405,46 @@ export default function App() {
                   {item.degree}; {item.scoreLabel}: {item.score}
                 </p>
                 <p className="muted education-location">{item.location}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="certifications" className="section container">
+          <h2>Certifications</h2>
+          <div className="grid certifications-grid">
+            {certifications.map((item) => (
+              <article
+                className="card tilt-card interactive-card"
+                key={`${item.name}-${item.issuer}`}
+                onMouseMove={handleTilt}
+                onMouseLeave={resetTilt}
+                onBlur={resetTilt}
+              >
+                <div className="certification-header">
+                  <img
+                    className="certification-logo"
+                    src={item.badgeLogo}
+                    alt={`${item.name} badge`}
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <h3>{item.name}</h3>
+                <p className="project-meta">{item.issuer}</p>
+                <p className="muted">
+                  Issued {item.issued} • Expires {item.expires}
+                </p>
+                <p className="muted">Credential ID: {item.credentialId}</p>
+                <a
+                  className="certification-link"
+                  href={item.credentialLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Credential ↗
+                </a>
               </article>
             ))}
           </div>
